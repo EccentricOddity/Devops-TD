@@ -30,8 +30,8 @@ Assignments are organized by course topic or module. Use the folders below to fi
 To download the repository:
 
 ```bash
-git clone [repository URL]
-cd [repository directory]
+git clone https://github.com/EccentricOddity/Devops-TD
+cd <repository directory>
 ```
 
 ## Tools and technologies

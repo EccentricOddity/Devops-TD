@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "status_code": 200,
+  "data": [
+    {
+      "user": {
+        "id": 10235,
+        "username": "johndoe",
+        "email": "johndoe@example.com",
+        "is_active": true,
+        "roles": [
+          "admin",
+          "editor"
+        ]
+      }
+    },
+    {
+      "user": {
+        "id": 10236,
+        "username": "jilldoe",
+        "email": "jilldoe@example.com",
+        "is_active": false,
+        "roles": [
+          "editor"
+        ]
+      }
+    }
+  ]
+}

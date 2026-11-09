@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                "Segoe UI", sans-serif;
+            background: #090b12;
+            color: #f4f5fb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background:
+                radial-gradient(ellipse at 15% 20%, rgb(99 72 190 / 20%), transparent 35%),
+                radial-gradient(ellipse at 85% 80%, rgb(0 181 173 / 15%), transparent 35%),
+                #090b12;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0.3;
+            z-index: -1;
+            animation: drift 12s ease-in-out infinite alternate;
+        }
+
+        body::before {
+            top: 8%;
+            left: 8%;
+            background: radial-gradient(circle, #8b5cf6, transparent 68%);
+        }
+
+        body::after {
+            right: 8%;
+            bottom: 5%;
+            background: radial-gradient(circle, #14b8a6, transparent 68%);
+            animation-delay: -5s;
+        }
+
+        form {
+            width: min(100%, 430px);
+            padding: clamp(28px, 6vw, 44px);
+            border: 1px solid rgb(255 255 255 / 12%);
+            border-radius: 24px;
+            background: rgb(20 23 34 / 82%);
+            box-shadow: 0 24px 80px rgb(0 0 0 / 45%);
+            backdrop-filter: blur(18px);
+            animation: appear 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: clamp(2rem, 6vw, 2.6rem);
+            letter-spacing: -0.06em;
+        }
+
+        form::before {
+            content: "Create your account";
+            display: block;
+            margin: 0 0 28px;
+            color: #a6aabd;
+            font-size: 0.95rem;
+        }
+
+        form>div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #d8dbea;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #343849;
+            border-radius: 12px;
+            outline: none;
+            background: #10131c;
+            color: #f4f5fb;
+            font: inherit;
+            transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+        }
+
+        input::placeholder {
+            color: #777d90;
+        }
+
+        input:hover {
+            border-color: #555d76;
+        }
+
+        input:focus {
+            border-color: #9b8aff;
+            box-shadow: 0 0 0 4px rgb(139 92 246 / 18%);
+            transform: translateY(-1px);
+        }
+
+        button {
+            width: 100%;
+            margin-top: 8px;
+            padding: 14px 18px;
+            border: 0;
+            border-radius: 12px;
+            background: linear-gradient(110deg, #8b5cf6, #6d5dfc 55%, #4f8cff);
+            box-shadow: 0 10px 28px rgb(109 93 252 / 28%);
+            color: white;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+        }
+
+        #error-message {
+            width: min(100%, 430px);
+            margin-top: 16px;
+            padding: 12px 14px;
+            border: 1px solid rgb(248 113 113 / 28%);
+            border-radius: 12px;
+            background: rgb(127 29 29 / 30%);
+            color: #fecaca;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            box-shadow: 0 8px 24px rgb(239 68 68 / 10%);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 34px rgb(109 93 252 / 42%);
+            filter: brightness(1.08);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:focus-visible {
+            outline: 3px solid #c4b5fd;
+            outline-offset: 4px;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes drift {
+            from {
+                transform: translate3d(0, 0, 0) scale(0.9);
+            }
+
+            to {
+                transform: translate3d(28px, -22px, 0) scale(1.12);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sign Up</h1>
+    <form action="/" method="post">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" autocomplete="new-password" required>
+        </div>
+        <button type="submit">Create account</button>
+    </form>
+    {% with messages = get_flashed_messages(category_filter=['error']) %}
+    {% if error or messages %}
+    <div id="error-message" role="alert" aria-live="polite">
+        {{ error or messages|join(' ') }}
+    </div>
+    {% endif %}
+    {% endwith %}
+</body>
+
+</html>

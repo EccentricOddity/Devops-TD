@@ -20,6 +20,7 @@ Assignments are organized by course topic or module. Use the folders below to fi
 |---|---|---|
 | Linux Basics | Assign_1/ | Linux Commands |
 | Python Refresher | Assign_2/ |  Referesher on Python Fundamentals|
+| Flask API & UI | Assign_2/ |  Login form using Flask|
 
 ## How to use this repository
 

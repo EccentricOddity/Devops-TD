@@ -10,6 +10,7 @@ Assignments are organized by course topic or module. Use the folders below to fi
 .
 ├── Linux/   # A Document with linux commands
 ├── Python Refresher/   # Python hands on
+├── Flask/   # Flask hands on
 └── README.md
 ```
 

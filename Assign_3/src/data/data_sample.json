@@ -24,6 +24,17 @@
           "editor"
         ]
       }
+    },
+    {
+      "user": {
+        "id": 10237,
+        "username": "Bonjoe",
+        "email": "Bonjoe@example.com",
+        "is_active": true,
+        "roles": [
+          "editor"
+        ]
+      }
     }
   ]
 }

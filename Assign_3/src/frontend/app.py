@@ -39,6 +39,27 @@ def signup_post():
         else:
             return render_template('index.html', error="An error occurred while submitting the data. Please try again."+str(response))
 
+        
+@app.route('/todo')
+def todo(): 
+    #Redirect the user to a todo page
+    return render_template('todo.html')
+
+@app.route('/todo',methods=['POST'])
+def todo_post(): 
+    #Redirect the user to a todo page
+    form_data = request.form
+    itemName = form_data.get('item-name')
+    itemDescription = form_data.get('item-description')
+    print(form_data)
+    # code to save the data to a database
+    todo_data = {
+                'name': itemName,
+                'description': itemDescription
+            }
+    postUrl = f"{BACKEND_URL}/todo"
+   
+    response = requests.post(postUrl, todo_data)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)

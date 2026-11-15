@@ -32,9 +32,9 @@ def submit_todo_item():
     collection = db['todo_items']
     try:
         form_data = request.form
-        print(form_data)
-        itemName = form_data.get('itemName')
-        itemDescription = form_data.get('itemDescription')
+
+        itemName = form_data.get('name')
+        itemDescription = form_data.get('description')
         # print(name,email,password)
         # code to save the data to a database
         todo_data = {

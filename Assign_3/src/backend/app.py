@@ -10,9 +10,7 @@ MONGO_URI = os.getenv("MONGO_URI")
 
 client = MongoClient(MONGO_URI)
 
-db = client['user_data']
 
-collection = db['users']
 
 
 app = Flask(__name__)
@@ -29,10 +27,43 @@ def home():
 
 
 #Task - 2 post route to handle the form submission
+@app.route('/submittodoitem ', methods=['POST'])
+def submit_user():
+    # Get the form data
+    #Create a form on the frontend that, when submitted, inserts data into MongoDB Atlas.
+    db = client['user_data']
+    
+    collection = db['todo_items']
+    try:
+        form_data = request.form
+        print(form_data)
+        itemName = form_data.get('itemName')
+        itemDescription = form_data.get('itemDescription')
+        # print(name,email,password)
+        # code to save the data to a database
+        todo_data = {
+            'name': itemName,
+            'description': itemDescription
+        }
+        collection.insert_one(todo_data)
+
+
+        #On success: The user should be redirected to another page displaying the message “Data submitted successfully”
+        return {"message": "Success"}
+
+    except Exception as e:
+        #On error: display the error on the same page without redirection.
+        return {"error": "Error: " + str(e)}
+
+
+#Task - 2 post route to handle the form submission
 @app.route('/signup', methods=['POST'])
 def submit_user():
     # Get the form data
     #Create a form on the frontend that, when submitted, inserts data into MongoDB Atlas.
+    db = client['user_data']
+
+    collection = db['users']
     try:
         form_data = request.form
         print(form_data)

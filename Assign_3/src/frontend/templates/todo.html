@@ -217,6 +217,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
@@ -249,6 +250,13 @@
 
         <!-- <p class="empty-state" id="empty-state">Your tasks will appear here.</p>
         <ul class="task-list" id="task-list" aria-live="polite"></ul> -->
+ {% with messages = get_flashed_messages(category_filter=['error']) %}
+    {% if error or messages %}
+    <div id="error-message" role="alert" aria-live="polite">
+        {{ error or messages|join(' ') }}
+    </div>
+    {% endif %}
+{% endwith %}
     </main>
 
 

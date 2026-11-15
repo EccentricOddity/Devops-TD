@@ -7,11 +7,7 @@ load_dotenv()
 
 MONGO_URI = os.getenv("MONGO_URI")
 
-
 client = MongoClient(MONGO_URI)
-
-
-
 
 app = Flask(__name__)
 
@@ -26,9 +22,9 @@ def home():
     return json_response 
 
 
-#Task - 2 post route to handle the form submission
-@app.route('/submittodoitem ', methods=['POST'])
-def submit_user():
+#Task - 2 post route to handle the todoitem post request
+@app.route('/submititem', methods=['POST'])
+def submit_todo_item():
     # Get the form data
     #Create a form on the frontend that, when submitted, inserts data into MongoDB Atlas.
     db = client['user_data']

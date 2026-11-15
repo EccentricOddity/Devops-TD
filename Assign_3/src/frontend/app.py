@@ -1,6 +1,6 @@
 
 import os
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 import requests
 
 
@@ -28,10 +28,8 @@ def signup_post():
             'password': password
         }
         postUrl = f"{BACKEND_URL}/signup"
-
+        print(postUrl)
         response = requests.post(postUrl, user_data)
-        print(postUrl) 
-        print(response.json()) 
 
         #On success: The user should be redirected to another page displaying the message “Data submitted successfully”
         if(response.json().get("message") == "Success"):
@@ -49,17 +47,25 @@ def todo():
 def todo_post(): 
     #Redirect the user to a todo page
     form_data = request.form
-    itemName = form_data.get('item-name')
-    itemDescription = form_data.get('item-description')
-    print(form_data)
+    itemName = form_data.get('item_name')
+    itemDescription = form_data.get('item_description')
+
     # code to save the data to a database
     todo_data = {
                 'name': itemName,
                 'description': itemDescription
             }
-    postUrl = f"{BACKEND_URL}/todo"
-   
-    response = requests.post(postUrl, todo_data)
+    postUrl = f"{BACKEND_URL}/submititem"
 
+    response = requests.post(postUrl, data=todo_data)
+
+    if(response.json().get("message") == "Success"):
+        return redirect(url_for('todo'))
+    else:
+          return render_template(
+            'todo.html',
+            error=f"Failed to save todo: {response.text}"
+        )
+   
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)

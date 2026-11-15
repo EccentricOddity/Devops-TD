@@ -11,6 +11,7 @@ Assignments are organized by course topic or module. Use the folders below to fi
 ├── Linux/   # A Document with linux commands
 ├── Python Refresher/   # Python hands on
 ├── Flask/   # Flask hands on
+├── Git & GitHub/   # Git hands on
 └── README.md
 ```
 
@@ -21,7 +22,8 @@ Assignments are organized by course topic or module. Use the folders below to fi
 |---|---|---|
 | Linux Basics | Assign_1/ | Linux Commands |
 | Python Refresher | Assign_2/ |  Referesher on Python Fundamentals|
-| Flask API & UI | Assign_2/ |  Login form using Flask|
+| Flask API & UI | Assign_3/ |  Login form using Flask|
+| Git & GitHub | Assign_4/ |  Git hands on|
 
 ## How to use this repository
 
